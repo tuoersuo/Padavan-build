@@ -7,6 +7,9 @@ on:
   push:
     tags:
     - 'v*'
+    paths:
+      - '.config'
+      - '.github/workflows/build-padavan.yml'
   #  branches: 
   #    - master
 #  schedule:
@@ -38,7 +41,7 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: NEWIFI3
+        TNAME: MI-R3G
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
@@ -95,6 +98,7 @@ jobs:
         #########################################################################################
         echo "CONFIG_FIRMWARE_INCLUDE_REDSOCKS=y" >> .config #Enable REDSOCKS
         echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >> .config #Enable SMARTDNS
+        echo "CONFIG_FIRMWARE_INCLUDE_HAPROXY=y" >> .config #Enable HAPROXY
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：
