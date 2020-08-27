@@ -5,8 +5,8 @@ on:
   release:
     types: [published]
   push:
-    tags:
-    - 'v*'
+    branches:
+      - master
     paths:
       - '.config'
       - '.github/workflows/build-padavan.yml'
@@ -41,7 +41,7 @@ jobs:
         mkdir -p /opt/images/
     - name: Build Firmware
       env:
-        TNAME: PSG1218
+        TNAME: MI-3
       run: |
         cd /opt/rt-n56u/trunk
         if [ ! -f configs/templates/$TNAME.config ] ; then
