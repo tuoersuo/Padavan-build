@@ -36,6 +36,8 @@ jobs:
     - name: Clone source code
       run: |
         git clone --depth=1 https://github.com/SuzukiHonoka/rt-n56u /opt/rt-n56u --recursive 
+        cd /opt/rt-n56u
+        git submodule update --init --recursive
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
