@@ -113,7 +113,6 @@ jobs:
         cp .config configs/templates/$TNAME.config
         #########################################################################################
         sudo ./clear_tree
-        sudo export LD_LIBRARY_PATH=/opt/rt-n56u/trunk/stage/lib/:$LD_LIBRARY_PATH
         sudo ./build_firmware_modify $TNAME 0
         sudo mv -f images/*.trx /opt/images/
     - name : Upload packages
